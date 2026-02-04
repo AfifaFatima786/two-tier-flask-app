@@ -34,6 +34,10 @@ def hello():
     return render_template('index.html', messages=messages)
 
 @app.route('/submit', methods=['POST'])
+@app.route("/health")
+def health():
+    return "OK", 200
+
 def submit():
     new_message = request.form.get('new_message')
     cur = mysql.connection.cursor()
