@@ -8,6 +8,11 @@ pipeline{
                 echo "Code clone hogya"
             }
         }
+        stage("Trivy file system scan"){
+            steps{
+                sh "trivy fs . -o results.json"
+            }
+        }
         stage("Build"){
             steps{
                 sh "docker build -t two-tier-flask-app ."
